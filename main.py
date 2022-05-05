@@ -12,18 +12,19 @@ x_train, x_test = x_train / 255, x_test / 255
 
 class_names = ['Plane', 'Car', 'Bird', 'Cat', 'Deer', 'Dog', 'Frog', 'Horse', 'Ship', 'Truck']
 model = tf.keras.models.Sequential()
-model.add(tf.keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)))
+model.add(tf.keras.layers.Conv2D(64, (3, 3), activation='relu', input_shape=(32, 32, 3)))
 model.add(tf.keras.layers.MaxPooling2D((2, 2)))
-model.add(tf.keras.layers.Conv2D(64, (3, 3), activation='relu'))
+model.add(tf.keras.layers.Conv2D(256, (3, 3), activation='relu'))
 model.add(tf.keras.layers.MaxPooling2D((2, 2)))
-model.add(tf.keras.layers.Conv2D(64, (3, 3), activation='relu'))
+model.add(tf.keras.layers.Conv2D(512, (3, 3), activation='relu'))
 model.add(tf.keras.layers.Flatten())
-model.add(tf.keras.layers.Dense(64, activation='relu'))
+model.add(tf.keras.layers.Dense(256, activation='relu'))
 model.add(tf.keras.layers.Dense(10, activation='softmax'))
 
 
 def start(update, context):
     update.message.reply_text('Welcome')
+
 
 
 def help(update, context):
@@ -43,7 +44,8 @@ def train(update, context):
 
 
 def handle_message(update, context):
-    update.message.reply_text('Please train the model and send the picture!')
+    # update.message.reply_text('Please train the model and send the picture!')
+    update.message.reply_text('Please send the picture!')
 
 
 def handle_photo(update, context):
